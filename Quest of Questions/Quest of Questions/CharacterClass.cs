@@ -12,11 +12,11 @@ namespace Quest_of_Questions
         private double health;
         private int goldHolding;
         private int itemHoldingNumber;
-        private int humanItemLimit = 5;
-        private int 
+        private int itemLimit;
+        
 
 
-        public string CharacterName
+         public string CharacterName
         {
             get
             {
@@ -94,14 +94,25 @@ namespace Quest_of_Questions
                 this.characterName = value;
             }
         }
+        public int ItemLimit
+        {
+            get
+            {
+                return this.itemLimit;
+            }
+            set
+            {
+                this.itemLimit = value;
+            }
+        }
 
-        public CharacterClass(string name, string classType, double health, int goldHolding, int itemHoldingNumber)
+        public CharacterClass(string name, string classType, double health, int goldHolding, int itemLimit)
         {
             this.CharacterName = name;
             this.ClassType = classType;
             this.Health = health;
             this.GoldHolding = goldHolding;
-            this.ItemHoldingNumber = itemHoldingNumber; 
+            this.ItemLimit = itemLimit;
         }
     }
 }

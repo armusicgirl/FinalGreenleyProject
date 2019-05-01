@@ -6,11 +6,22 @@ namespace Quest_of_Questions
     {
         static void Main(string[] args)
         {
-            
+            Console.Title = "Quest Of Questions";
+
+
+        //PreGame Logic
             Random rnd = new Random();
             int GameNumber = rnd.Next(1, 11);
 
-RoomClass[] rooms = new RoomClass[335]; // N, E, S, W, U, D
+            int currentRoom = 1;
+            string command = "";
+
+            //List<ItemClass> inventory = new List<ItemClass>();
+
+            //string commandString = Console.ReadLine().ToUpper();
+            string[] charSeparators = new string[] { " ", ",", "." };
+
+            RoomClass[] rooms = new RoomClass[335]; // N, E, S, W, U, D
 
             if (GameNumber % 2 == 0)
             {
@@ -51,7 +62,7 @@ RoomClass[] rooms = new RoomClass[335]; // N, E, S, W, U, D
                 rooms[35] = new RoomClass(0, 33, 0, 0, 0, 0, "Credits: ", "    ");
                 rooms[40] = new RoomClass(17, 0, 0, 0, 0, 0, "Story Of Time: ", "     ");
             }
-            if (GameNumber % 2 != 0 && GameNumber >=5)
+            if (GameNumber % 2 != 0 && GameNumber >= 5)
             {
                 rooms[1] = new RoomClass(2, 0, 0, 0, 0, 0, "Forest: ", "Welcome, I've heard you are looking for the Golden Blizing. After years of reasearch, it looks like you were sucessful in finding the temple, but no one knows what lies inside. Becareful, and make sure to prove to all those who dobted you that you were right about this.");
                 rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by tourches. This isn't so bad, Lets go get the Golden Blizing");
@@ -132,13 +143,214 @@ RoomClass[] rooms = new RoomClass[335]; // N, E, S, W, U, D
                 rooms[42] = new RoomClass(0, 41, 143, 0, 0, 0, "Black Out: ", "The room is so dark walking in, the tourch light seems to be engulfed by the darkness. Was that a noise?");
                 rooms[43] = new RoomClass(43, 0, 133, 0, 0, 0, "Empty: ", "Just stone walls");
             }
+            string Name = "bob";
+            //A bit underprepaired, but great at asking questions that could be extra useful
+            CharacterClass Tourist = new CharacterClass(Name, "Tourist",10, 50, 5);
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Start");
-            Console.ResetColor();
+        //Start Of Game Seen
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
+            string s = "Press Enter to Start:";
+                    Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.WriteLine(s);
+                    Console.ResetColor();
+                    Console.ReadLine();
+
+            Console.WriteLine("Type the corresponding number with the character you would like to be:");
+
+
+
+            //Game Loop
+            do
+            {
+
+                Console.WriteLine(rooms[currentRoom].visitRoom());
+                Console.Write("Command (N,E,S,W,U,D,Q): ");
+
+                command = Console.ReadLine().ToUpper();
+                string[] commandWords = command.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+
+                //Single letter Directrions
+                if (commandWords.Length == 1)
+                {
+                    if (commandWords[0] == "N" || commandWords[0] == "E" || commandWords[0] == "S" || commandWords[0] == "W" || commandWords[0] == "U" || commandWords[0] == "D" ||
+                        commandWords[0] == "NORTH" || commandWords[0] == "EAST" || commandWords[0] == "SOUTH" || commandWords[0] == "WEST" ||
+                        commandWords[0] == "UP" || commandWords[0] == "Down")
+                    {
+
+                        if (commandWords[0] == "N" && rooms[currentRoom].ToNorth > 0 && rooms[currentRoom].ToNorth < 100 ||
+                            commandWords[0] == "NORTH" && rooms[currentRoom].ToNorth > 0 && rooms[currentRoom].ToNorth < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToNorth;
+                            Console.WriteLine();
+                        }
+                        else if (commandWords[0] == "E" && rooms[currentRoom].ToEast > 0 && rooms[currentRoom].ToEast < 100 ||
+                            commandWords[0] == "EAST" && rooms[currentRoom].ToEast > 0 && rooms[currentRoom].ToEast < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToEast;
+                            Console.WriteLine();
+
+                        }
+                        else if (commandWords[0] == "S" && rooms[currentRoom].ToSouth > 0 && rooms[currentRoom].ToSouth < 100 ||
+                            commandWords[0] == "SOUTH" && rooms[currentRoom].ToSouth > 0 && rooms[currentRoom].ToSouth < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToSouth;
+                            Console.WriteLine();
+
+                        }
+                        else if (commandWords[0] == "W" && rooms[currentRoom].ToWest > 0 && rooms[currentRoom].ToWest < 100 ||
+                            commandWords[0] == "WEST" && rooms[currentRoom].ToWest > 0 && rooms[currentRoom].ToWest < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToWest;
+                            Console.WriteLine();
+
+                        }
+                        else if (commandWords[0] == "U" && rooms[currentRoom].ToUp > 0 && rooms[currentRoom].ToUp < 100 ||
+                            commandWords[0] == "UP" && rooms[currentRoom].ToUp > 0 && rooms[currentRoom].ToUp < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToUp;
+                            Console.WriteLine();
+
+                        }
+                        else if (commandWords[0] == "D" && rooms[currentRoom].ToDown > 0 && rooms[currentRoom].ToDown < 100 ||
+                            commandWords[0] == "Down" && rooms[currentRoom].ToDown > 0 && rooms[currentRoom].ToDown < 100)
+                        {
+                            currentRoom = rooms[currentRoom].ToDown;
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, You can't go that way ");
+                            Console.WriteLine();
+                        }
+                    }
+                    else if (commandWords[0] == "SEARCH")
+                    {
+                        //Finds Hidden and Locked Rooms
+                        if (rooms[currentRoom].ToNorth >= 100 && rooms[currentRoom].ToNorth <= 200)
+                        {
+                            Console.WriteLine("You have found a passage to the north, but it is locked");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToNorth = rooms[currentRoom].ToNorth * -1;
+                        }
+                        if (rooms[currentRoom].ToEast >= 100 && rooms[currentRoom].ToEast <= 200)
+                        {
+                            Console.WriteLine("You have found a passage to the east, but it is locked");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToEast = rooms[currentRoom].ToEast * -1;
+                        }
+                        if (rooms[currentRoom].ToSouth >= 100 && rooms[currentRoom].ToSouth <= 200)
+                        {
+                            Console.WriteLine("You have found a passage to the south, but it is locked");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToSouth = rooms[currentRoom].ToSouth * -1;
+                        }
+                        if (rooms[currentRoom].ToWest >= 100 && rooms[currentRoom].ToWest <= 200)
+                        {
+                            Console.WriteLine("You have found a passage to the west, but it is locked");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToWest = rooms[currentRoom].ToWest * -1;
+                        }
+                        if (rooms[currentRoom].ToUp >= 100 && rooms[currentRoom].ToUp <= 200)
+                        {
+                            Console.WriteLine("You have found an Upper passage, but it is locked");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            rooms[currentRoom].ToUp = rooms[currentRoom].ToUp * -1;
+                        }
+                        if (rooms[currentRoom].ToDown >= 100 && rooms[currentRoom].ToDown <= 200)
+                        {
+                            Console.WriteLine("You have found a passage under the floor, but it is locked");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToDown = rooms[currentRoom].ToDown * -1;
+                        }
+
+                        //Finds Hidden Rooms
+                        if (rooms[currentRoom].ToNorth >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToNorth = rooms[currentRoom].ToNorth - 200;
+                        }
+                        if (rooms[currentRoom].ToEast >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToEast = rooms[currentRoom].ToEast - 200;
+                        }
+                        if (rooms[currentRoom].ToSouth >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToSouth = rooms[currentRoom].ToSouth - 200;
+                        }
+                        if (rooms[currentRoom].ToWest >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToWest = rooms[currentRoom].ToWest - 200;
+                        }
+                        if (rooms[currentRoom].ToUp >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToUp = rooms[currentRoom].ToUp - 200;
+                        }
+                        if (rooms[currentRoom].ToDown >= 200)
+                        {
+                            Console.WriteLine("You have found a passage, Now You Can See Where It Leads");
+                            Console.WriteLine();
+                            rooms[currentRoom].ToDown = rooms[currentRoom].ToDown - 200;
+                        }
+                    }
+                    else if (commandWords[0] == "LOOK")
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(rooms[currentRoom].RoomDescription);
+                        Console.WriteLine();
+                    }
+
+                    else if (commandWords[0] == "HELP")
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Type N, S, E, W, U, D to move through rooms");
+                        Console.WriteLine("Search, Unlock With ____, Get ___, Drop ____, Read Note, Info ____, Dig With ____, inventory, look ");
+                        Console.WriteLine();
+                    }
+
+                    //Command error catch
+                    else if (commandWords[0] == "DIG")
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("What would you like to dig WITH? ");
+                        Console.WriteLine();
+                    }
+
+                    else if (commandWords[0] == "Unlock")
+                    {
+                        Console.WriteLine("What would you like to unlock that WITH? ");
+                        Console.WriteLine();
+                    }
+                    else if (commandWords[0] == "Get")
+                    {
+                        Console.WriteLine("What ITEM would you like to get? ");
+                        Console.WriteLine();
+                    }
+                    else if (commandWords[0] == "Drop")
+                    {
+                        Console.WriteLine("What ITEM would you like to drop? ");
+                        Console.WriteLine();
+                    }
+                    else if (commandWords[0] == "READ")
+                    {
+                        Console.WriteLine("What would you like to read? ");
+                        Console.WriteLine();
+                    }
+
+
+                }
+            } while (command != "Q");
             Console.ReadKey();
-
-
         }
     }
 }

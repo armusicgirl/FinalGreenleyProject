@@ -16,8 +16,8 @@ namespace Quest_of_Questions
         private int toUp;
         private int toDown;
         private bool visited;
-        //public List<ItemClass> roomItem = new List<ItemClass>();
-       // public List<NoteClass> roomNote = new List<NoteClass>();
+        public List<ItemClass> roomItem = new List<ItemClass>();
+        //public List<NoteClass> roomNote = new List<NoteClass>();
 
 
         public int RoomNumber
@@ -153,7 +153,7 @@ namespace Quest_of_Questions
         //{
 
         //}
-        /*public string visitRoom()
+        public string visitRoom()
         {
             string info = roomName;
             if (visited != true)
@@ -185,9 +185,9 @@ namespace Quest_of_Questions
             if (this.toDown >= 1 && this.toDown <= 100)
             {
                 info += "D ";
-            }*/
+            }
 
-         /*   if (this.roomItem.Count > 0)
+            if (this.roomItem.Count > 0)
             {
                 info += "\n In the room you see:";
                 foreach (ItemClass item in roomItem)
@@ -196,9 +196,9 @@ namespace Quest_of_Questions
                 }
             }
             return info;
-        } */
+        }
 
-      /*  public string ReadNote()
+        /*public string ReadNote()
         {
             string info = " ";
             if (this.roomNote.Count > 0)
