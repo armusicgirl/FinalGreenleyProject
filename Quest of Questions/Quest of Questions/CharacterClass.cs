@@ -6,5 +6,126 @@ namespace Quest_of_Questions
 {
     class CharacterClass
     {
+
+        private string characterName;
+        private string classType;
+        private string characterInfo;
+        private double health;
+        private int goldHolding;
+        private int itemHoldingNumber;
+        private int itemLimit;
+        
+
+
+         public string CharacterName
+        {
+            get
+            {
+                return this.characterName;
+            }
+            set
+            {
+                this.characterName = value;
+            }
+        }
+
+        public string ClassType
+        {
+            get
+            {
+                return this.classType;
+            }
+            set
+            {
+                this.classType = value;
+            }
+        }
+        public string CharacterInfo
+        {
+            get
+            {
+                return this.characterInfo;
+            }
+            set
+            {
+                this.characterInfo = value;
+            }
+        }
+        public int GoldHolding
+        {
+            get
+            {
+                return this.goldHolding;
+            }
+            set
+            {
+                this.goldHolding = value;
+            }
+        }
+
+        public double Health
+        {
+            get
+            {
+                return this.health;
+            }
+            set
+            {
+                this.health = value;
+            }
+        }
+
+        public int ItemHoldingNumber
+        {
+            get
+            {
+                return this.itemHoldingNumber;
+            }
+            set
+            {
+                this.itemHoldingNumber = value;
+            }
+        }
+
+        public string HealthInfo
+        {
+            get
+            {
+                if (this.health < 0)
+                {
+                    return "You are dead";
+                }
+                if (this.health >= 1 && this.health <= 3)
+                {
+                    return "Warning, Very Low Health. Healing will soon be nessary for survival.";
+                }
+                return this.characterName;
+            }
+            set
+            {
+                this.characterName = value;
+            }
+        }
+        public int ItemLimit
+        {
+            get
+            {
+                return this.itemLimit;
+            }
+            set
+            {
+                this.itemLimit = value;
+            }
+        }
+
+        public CharacterClass(string name, string classType, string characterinfo, double health, int goldHolding, int itemLimit)
+        {
+            this.CharacterName = name;
+            this.ClassType = classType;
+            this.CharacterInfo = characterinfo;
+            this.Health = health;
+            this.GoldHolding = goldHolding;
+            this.ItemLimit = itemLimit;
+        }
     }
 }
