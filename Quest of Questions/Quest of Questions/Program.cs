@@ -145,12 +145,16 @@ namespace Quest_of_Questions
             }
             string Name = "bob";
             //A bit underprepaired, but great at asking questions that could be extra useful
-            CharacterClass Tourist = new CharacterClass(Name, "Tourist","You're not familier with the area, but walking away from the tour group was a adventurous descision " +
-                "that has brought you to an acient temple. You had heard the tourest guide say something about a priceless, long lost Golden Blizing that is somewhere in there. ", 10, 50, 5);
-            CharacterClass Archaeologist = new CharacterClass(Name, "Archaeologist", "You have been studying sights like this for years, when you heard about the priceless, long lost," +
-                "Golden Blizing you had to come take a look. ", 10, 15, 5);
-            CharacterClass HomeDesigner = new CharacterClass(Name, "Home Designer", "A very well off client has asked you to design a get-away home for them. They wanted it to feel like" +
-                "it was an acient temple, and this one caught your eye. When looking around at the features someone told you about a priceless, long lost Golden Blizing. ", 10, 5, 5);
+            CharacterClass Tourist = new CharacterClass(1, Name, "Tourist: you are able to ask extra questions that others may not think about",", You're not familier with the area, but walking away from the tour group was a adventurous descision " +
+                "that has brought you to an acient temple. You had heard the tourest guide say something about a priceless, long lost Golden Blizing that is somewhere in there. ", 10, 50, 5,2);
+            CharacterClass Archaeologist = new CharacterClass(2, Name, "Archaeologist: Temples like these are your specialty, you understand the hyroglif meanings and don't need a translator.", ", You have been studying temples like this one for years, when you heard about the priceless, long lost," +
+                "Golden Blizing you had to come take a look. ", 10, 15, 5,3);
+            CharacterClass HomeDesigner = new CharacterClass(3, Name, "Home Designer: You know when a wall looks funky, you can easily find passages others might not have thought about.", ", A very well off client has asked you to design a get-away home for them. They wanted it to feel like" +
+                "it was an acient temple, and this one caught your eye. When looking around at the features someone told you about a priceless, long lost Golden Blizing. ", 10, 5, 5,3);
+            CharacterClass Soldier = new CharacterClass(4, Name, "Soldier: You are skilled in combat and can take on whatever comes your way.", ", Your day off from training, a few of your friends " +
+                " dared you to go into the cave and look for the priceless, long lost Golden Blizing. You're not chicken are you?", 12, 0, 5,5);
+            CharacterClass NativeChild = new CharacterClass(5, Name, "Native Child: you have heard all the the riddles and stories before, all you have to do is remember.",
+                ", You are young to go to school, but adventure is running through your veins. After hearing Papie tell you stories of the priceless, long lost Golden Blizing you decided that you were going to bring it back to him", 10, 0, 7, 1);
 
 
 
@@ -163,8 +167,43 @@ namespace Quest_of_Questions
                     Console.ResetColor();
                     Console.ReadLine();
 
-            Console.WriteLine("Type the corresponding number with the character you would like to be:");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(" What would you like to be named: ");
+            Console.ResetColor();
+            Name = Console.ReadLine();
+            Console.WriteLine();
 
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("  Type the corresponding number with the character you would like to be: ");
+            Console.ResetColor();
+            Console.WriteLine("1. " + Tourist.ToString());
+            Console.WriteLine("2. " + Archaeologist.ToString());
+            Console.WriteLine("3. " + HomeDesigner.ToString());
+            Console.WriteLine("4. " + Soldier.ToString());
+            Console.WriteLine("5. " + NativeChild.ToString());
+            Console.WriteLine();
+
+            int userNumber = EnterAnInt();
+            if (userNumber == Tourist.CharacterNumber)
+            {
+                Console.WriteLine(Name + Tourist.CharacterInfo);
+            }
+            else if(userNumber == Archaeologist.CharacterNumber)
+            {
+                Console.WriteLine(Name + Archaeologist.CharacterInfo);
+            }
+            else if (userNumber == HomeDesigner.CharacterNumber)
+            {
+                Console.WriteLine(Name + HomeDesigner.CharacterInfo);
+            }
+            else if (userNumber == Soldier.CharacterNumber)
+            {
+                Console.WriteLine(Name + Soldier.CharacterInfo);
+            }
+            else if (userNumber == NativeChild.CharacterNumber)
+            {
+                Console.WriteLine(Name + NativeChild.CharacterInfo);
+            }
 
 
             //Game Loop
@@ -359,5 +398,41 @@ namespace Quest_of_Questions
             } while (command != "Q");
             Console.ReadKey();
         }
+
+        private static int EnterAnInt()
+        {
+            int inputInt = 0;
+            bool True = false;
+            do
+            {
+                try
+                {
+                    
+                    inputInt = Int32.Parse(Console.ReadLine());
+                    if(inputInt == 1 || inputInt == 2 || inputInt == 3 || inputInt == 4 || inputInt == 5)
+                    {
+                        True = true;
+                    }
+                    
+
+                }
+                catch
+                {
+                    
+                    if(inputInt < 1 || inputInt > 5)
+                    {
+                        Console.WriteLine("Not a character number");
+                        True = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That is not a whole number");
+                        True = false;
+                    }   
+                }
+            } while (!True);
+            return inputInt;
+        }
+       
     }
 }

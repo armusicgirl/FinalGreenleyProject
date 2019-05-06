@@ -8,12 +8,14 @@ namespace Quest_of_Questions
     {
 
         private string characterName;
-        private string classType;
+        private string specialCharacter;
         private string characterInfo;
         private double health;
         private int goldHolding;
         private int itemHoldingNumber;
         private int itemLimit;
+        private int characterStrength;
+        private int characterNumber;
         
 
 
@@ -29,15 +31,15 @@ namespace Quest_of_Questions
             }
         }
 
-        public string ClassType
+        public string SpecialCharacter
         {
             get
             {
-                return this.classType;
+                return this.specialCharacter;
             }
             set
             {
-                this.classType = value;
+                this.specialCharacter = value;
             }
         }
         public string CharacterInfo
@@ -106,6 +108,18 @@ namespace Quest_of_Questions
                 this.characterName = value;
             }
         }
+        
+            public int CharacterNumber
+        {
+            get
+            {
+                return this.characterNumber;
+            }
+            set
+            {
+                this.characterNumber = value;
+            }
+        }
         public int ItemLimit
         {
             get
@@ -117,15 +131,32 @@ namespace Quest_of_Questions
                 this.itemLimit = value;
             }
         }
-
-        public CharacterClass(string name, string classType, string characterinfo, double health, int goldHolding, int itemLimit)
+        public int CharacterStrength
         {
+            get
+            {
+                return this.characterStrength;
+            }
+            set
+            {
+                this.characterStrength = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return specialCharacter + " Health: " + health + " Strength: " + characterStrength + " Holding Limit: " + itemLimit + " Gold starting with: " + goldHolding;
+        }
+        public CharacterClass(int characterNumber, string name, string specialCharacter, string characterinfo, double health, int goldHolding, int itemLimit, int characterStrength)
+        {
+            this.CharacterNumber = characterNumber;
             this.CharacterName = name;
-            this.ClassType = classType;
+            this.SpecialCharacter = specialCharacter;
             this.CharacterInfo = characterinfo;
             this.Health = health;
             this.GoldHolding = goldHolding;
             this.ItemLimit = itemLimit;
+            this.CharacterStrength = characterStrength;
         }
     }
 }
