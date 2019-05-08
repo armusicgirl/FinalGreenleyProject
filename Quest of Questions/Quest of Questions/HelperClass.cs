@@ -6,5 +6,8 @@ namespace Quest_of_Questions
 {
     class HelperClass
     {
+        private string helperName;
+        private int helperNumber;
+
     }
 }

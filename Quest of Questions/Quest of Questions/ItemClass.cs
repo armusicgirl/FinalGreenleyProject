@@ -10,6 +10,7 @@ namespace Quest_of_Questions
         private string itemDescription;
         private int itemValue;
         private int itemWearLevel;
+        private int itemPower;
 
  
         public string ItemName
@@ -56,13 +57,25 @@ namespace Quest_of_Questions
                 this.itemWearLevel = value;
             }
         }
+        public int ItemPower
+        {
+            get
+            {
+                return itemPower;
+            }
+            set
+            {
+                this.itemPower = value;
+            }
+        }
 
-        public ItemClass(string itemName, string itemDescription, int itemValue, int itemWhearLevel)
+        public ItemClass(string itemName, string itemDescription, int itemValue, int itemWhearLevel, int itemPower)
         {
             this.ItemName = itemName;
             this.ItemDescription = itemDescription;
             this.ItemValue = itemValue;
             this.ItemWearLevel = itemWhearLevel;
+            this.ItemPower = itemPower;
         }
     }
 }
