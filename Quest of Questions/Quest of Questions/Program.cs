@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Quest_of_Questions
 {
@@ -16,7 +18,8 @@ namespace Quest_of_Questions
             int currentRoom = 1;
             string command = "";
 
-            //List<ItemClass> inventory = new List<ItemClass>();
+            List<ItemClass> roomItem = new List<ItemClass>();
+            List<ItemClass> inventory = new List<ItemClass>();
 
             //string commandString = Console.ReadLine().ToUpper();
             string[] charSeparators = new string[] { " ", ",", "." };
@@ -26,7 +29,7 @@ namespace Quest_of_Questions
             if (GameNumber % 2 == 0)
             {
                 rooms[1] = new RoomClass(2, 0, 0, 0, 0, 0, "Forest: ", " Up for an Adventure? Head north to go inside the acient temple;~)");
-                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by tourches. This isn't so bad, Lets go get the Golden Blizing");
+                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by torches. This isn't so bad, Lets go get the Golden Blizing");
                 rooms[3] = new RoomClass(6, 2, 0, 5, 0, 0, "Room of Gold: ", "Looks like a treasure room. ");
                 rooms[4] = new RoomClass(7, 5, 0, 2, 0, 0, "Treasure Hall: ", "Looks like a room that could be filled with lots of gold. ");
                 rooms[5] = new RoomClass(9, 3, 2, 4, 0, 0, "Oberon's Room: ", "A little cozy room, three walls full of books. In the corner is a chair with a little stone statue that looks like it could be reading. Wouldn't it be nice if you could speak to such a wise looking statue.");
@@ -61,11 +64,22 @@ namespace Quest_of_Questions
                 rooms[34] = new RoomClass(0, 28, 0, 33, 0, 0, "All knowing: ", "A small girl sits in a little rocking chair reading a book, /Listen/ She says and hear of this place.");
                 rooms[35] = new RoomClass(0, 33, 0, 0, 0, 0, "Credits: ", "    ");
                 rooms[40] = new RoomClass(17, 0, 0, 0, 0, 0, "Story Of Time: ", "     ");
+
+                rooms[2].roomItem.Add(new ItemClass(1, "TORCH", "Lights Up The Room", 0, 1, 3));
+                rooms[11].roomItem.Add(new ItemClass(2, "KNIFE", "Sharp And Pointy, great for chopping", 3, 10, 2));
+                rooms[30].roomItem.Add(new ItemClass(3, "SWORD", "Weapon for a hero", 5, 10, 3));
+                rooms[30].roomItem.Add(new ItemClass(4, "SPEARS", "Perfect at throwing at monsters", 3, 3, 3));
+                rooms[30].roomItem.Add(new ItemClass(5, "BOW", "great for shooting arrows", 3, 40, 0));
+                rooms[30].roomItem.Add(new ItemClass(6, "ARROWS", "Can be shot out of a bow", 3, 5, 1));
+                rooms[30].roomItem.Add(new ItemClass(6, "ARROWS", "Can be shot out of a bow", 3, 5, 1));
+
+
+
             }
             if (GameNumber % 2 != 0 && GameNumber >= 5)
             {
                 rooms[1] = new RoomClass(2, 0, 0, 0, 0, 0, "Forest: ", " Up for an Adventure? Head north to go inside the acient temple;~)");
-                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by tourches. This isn't so bad, Lets go get the Golden Blizing");
+                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by torches. This isn't so bad, Lets go get the Golden Blizing");
                 rooms[3] = new RoomClass(6, 2, 0, 5, 0, 0, "Room of Gold: ", "Looks like a treasure room. ");
                 rooms[4] = new RoomClass(7, 5, 0, 2, 0, 0, "Treasure Hall: ", "Looks like a room that could be filled with lots of gold. ");
                 rooms[5] = new RoomClass(9, 3, 2, 4, 0, 0, "Oberon's Room: ", "A little cozy room, three walls full of books. In the corner is a chair with a little stone statue that looks like it could be reading. Wouldn't it be nice if you could speak to such a wise looking statue.");
@@ -100,12 +114,20 @@ namespace Quest_of_Questions
                 rooms[34] = new RoomClass(0, 28, 0, 33, 0, 0, "All knowing: ", "A small girl sits in a little rocking chair reading a book, /Listen/ She says and hear of this place.");
                 rooms[35] = new RoomClass(0, 33, 0, 0, 0, 0, "Credits: ", "    ");
                 rooms[41] = new RoomClass(10, 0, 0, 0, 0, 0, "Grand Room: ", "Lots of golden furniture. Look that fruit looks as if it was just picked.");
+
+                rooms[2].roomItem.Add(new ItemClass(1, "TORCH", "Lights Up The Room", 0, 1, 3));
+                rooms[11].roomItem.Add(new ItemClass(2, "KNIFE", "Sharp And Pointy, great for chopping", 3, 10, 2));
+                rooms[30].roomItem.Add(new ItemClass(3, "SWORD", "Weapon for a hero", 5, 10, 3));
+                rooms[30].roomItem.Add(new ItemClass(4, "SPEARS", "Perfect at throwing at monsters", 3, 3, 3));
+                rooms[30].roomItem.Add(new ItemClass(5, "BOW", "great for shooting arrows", 3, 40, 0));
+                rooms[30].roomItem.Add(new ItemClass(6, "ARROWS", "Can be shot out of a bow", 3, 5, 1));
+                rooms[30].roomItem.Add(new ItemClass(6, "ARROWS", "Can be shot out of a bow", 3, 5, 1));
             }
             //only in games less than 5
             if (GameNumber % 2 != 0 && GameNumber < 5)
             {
                 rooms[1] = new RoomClass(2, 0, 0, 0, 0, 0, "Forest: ", " Up for an Adventure? Head north to go inside the acient temple;~)");
-                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by tourches. This isn't so bad, Lets go get the Golden Blizing");
+                rooms[2] = new RoomClass(5, 3, 1, 4, 0, 0, "Entrance: ", "The room is lit up by torches. This isn't so bad, Lets go get the Golden Blizing");
                 rooms[3] = new RoomClass(6, 2, 0, 5, 0, 0, "Room of Gold: ", "Looks like a treasure room. ");
                 rooms[4] = new RoomClass(7, 5, 0, 2, 0, 0, "Treasure Hall: ", "Looks like a room that could be filled with lots of gold. ");
                 rooms[5] = new RoomClass(9, 3, 2, 4, 0, 0, "Oberon's Room: ", "A little cozy room, three walls full of books. In the corner is a chair with a little stone statue that looks like it could be reading. Wouldn't it be nice if you could speak to such a wise looking statue.");
@@ -142,6 +164,14 @@ namespace Quest_of_Questions
                 rooms[41] = new RoomClass(10, 0, 0, 42, 0, 0, "Grand Room: ", "Lots of golden furniture. Look that fruit looks as if it was just picked.");
                 rooms[42] = new RoomClass(0, 41, 143, 0, 0, 0, "Black Out: ", "The room is so dark walking in, the tourch light seems to be engulfed by the darkness. Was that a noise?");
                 rooms[43] = new RoomClass(43, 0, 133, 0, 0, 0, "Empty: ", "Just stone walls");
+
+                rooms[2].roomItem.Add(new ItemClass(1,"TORCH", "Lights Up The Room", 0, 1, 3));
+                rooms[11].roomItem.Add(new ItemClass(2,"KNIFE", "Sharp And Pointy, great for chopping", 3, 10, 2));
+                rooms[30].roomItem.Add(new ItemClass(3,"SWORD", "Weapon for a hero", 5, 10, 3));
+                rooms[30].roomItem.Add(new ItemClass(4,"SPEARS", "Perfect at throwing at monsters", 3, 3, 3));
+                rooms[30].roomItem.Add(new ItemClass(5,"BOW", "great for shooting arrows", 3, 40, 0));
+                rooms[30].roomItem.Add(new ItemClass(6,"ARROWS", "Can be shot out of a bow", 3, 5, 1));
+                rooms[30].roomItem.Add(new ItemClass(6,"ARROWS", "Can be shot out of a bow", 3, 5, 1));
             }
             string Name = "bob";
             //A bit underprepaired, but great at asking questions that could be extra useful
@@ -157,8 +187,7 @@ namespace Quest_of_Questions
                 ", You are young to go to school, but adventure is running through your veins. After hearing Papie tell you stories of the priceless, long lost Golden Blizing you decided that you were going to bring it back to him", 10, 0, 7, 1);
 
 
-
-        //Start Of Game Seen
+            //Start Of Game Seen
             Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine();
             string s = "Press Enter to Start:";
@@ -209,9 +238,20 @@ namespace Quest_of_Questions
             //Game Loop
             do
             {
-
-                Console.WriteLine(rooms[currentRoom].visitRoom());
-                Console.Write("Command (N,E,S,W,U,D,Q): ");
+                Console.WriteLine();
+                if (rooms[currentRoom] == rooms[1]  || rooms[currentRoom] == rooms[2] )
+                {
+                    Console.WriteLine(rooms[currentRoom].visitRoom());
+                }
+                else if(inventory.Contains(inventory.Find(item => item.ItemName == "TORCH")))
+                {
+                    Console.WriteLine(rooms[currentRoom].visitRoom());
+                }
+                else
+                {
+                    Console.WriteLine("It's Too dark in here to see, we need a torch");
+                }     
+                Console.WriteLine("Command (N,E,S,W,U,D,Q): ");
 
                 command = Console.ReadLine().ToUpper();
                 string[] commandWords = command.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -372,17 +412,17 @@ namespace Quest_of_Questions
                         Console.WriteLine();
                     }
 
-                    else if (commandWords[0] == "Unlock")
+                    else if (commandWords[0] == "UNLOCK")
                     {
                         Console.WriteLine("What would you like to unlock that WITH? ");
                         Console.WriteLine();
                     }
-                    else if (commandWords[0] == "Get")
+                    else if (commandWords[0] == "GET")
                     {
                         Console.WriteLine("What ITEM would you like to get? ");
                         Console.WriteLine();
                     }
-                    else if (commandWords[0] == "Drop")
+                    else if (commandWords[0] == "DROP")
                     {
                         Console.WriteLine("What ITEM would you like to drop? ");
                         Console.WriteLine();
@@ -393,8 +433,134 @@ namespace Quest_of_Questions
                         Console.WriteLine();
                     }
 
+                    // commands with at least three words
+                    //check to see what you are carrying
+                    else if (commandWords[0].Length >= 3 && commandWords[0].Substring(0, 3) == "INV")
+                    {
+                        Console.WriteLine("You are carrying the following Items: ");
+                        Console.WriteLine();
 
-                }
+                        if (inventory.Count == 0)
+                        {
+                            Console.WriteLine("Nothing");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            foreach (ItemClass item in inventory)
+                            {
+                                Console.WriteLine(item.ItemName);
+                            }
+                            Console.WriteLine();
+
+                        }
+
+                    }
+
+                    else if (commandWords.Length == 2)
+                    {
+                        if (commandWords[0] == "GET")
+                        {
+                            if (rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]) != null)
+                            {
+                                inventory.Add(rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]));
+                                rooms[currentRoom].roomItem.Remove(rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]));
+                                Console.WriteLine("You picked up a(n) " + commandWords[1]);
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("I do not see a " + commandWords[1] + " here!");
+                                Console.WriteLine();
+                            }
+                        }
+                        if (rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]) != null)
+                        {
+                            inventory.Add(rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]));
+                            rooms[currentRoom].roomItem.Remove(rooms[currentRoom].roomItem.Find(item => item.ItemName == commandWords[1]));
+                            //inventory.Add(commandWords[1]);
+                            Console.WriteLine("You picked up a(n) " + commandWords[1]);
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("I do not see a " + commandWords[1] + " here!");
+                            Console.WriteLine();
+                        }
+                        if (commandWords[0] == "DROP")
+                        {
+                            if (inventory.FindIndex(item => item.ItemName == commandWords[1]) >= 0)
+                            {
+                                rooms[currentRoom].roomItem.Add(inventory.Find(item => item.ItemName == commandWords[1]));
+                                inventory.Remove(inventory.Find(item => item.ItemName == commandWords[1]));
+                                Console.WriteLine("You dropped the " + commandWords[1]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("There is not a " + commandWords[1] + "in your inventory!");
+                                Console.WriteLine();
+
+                            }
+                        }
+                        else if (commandWords[0] == "GO")
+                        {
+                            if (commandWords[1] == "N" && rooms[currentRoom].ToNorth > 0 && rooms[currentRoom].ToNorth < 100 ||
+                                commandWords[1] == "NORTH" && rooms[currentRoom].ToNorth > 0 && rooms[currentRoom].ToNorth < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToNorth;
+                                Console.WriteLine();
+                            }
+                            else if (commandWords[1] == "E" && rooms[currentRoom].ToEast > 0 && rooms[currentRoom].ToEast < 100 ||
+                                commandWords[1] == "EAST" && rooms[currentRoom].ToEast > 0 && rooms[currentRoom].ToEast < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToEast;
+                                Console.WriteLine();
+
+                            }
+                            else if (commandWords[1] == "S" && rooms[currentRoom].ToSouth > 0 && rooms[currentRoom].ToSouth < 100 ||
+                                commandWords[1] == "SOUTH" && rooms[currentRoom].ToSouth > 0 && rooms[currentRoom].ToSouth < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToSouth;
+                                Console.WriteLine();
+
+                            }
+                            else if (commandWords[1] == "W" && rooms[currentRoom].ToWest > 0 && rooms[currentRoom].ToWest < 100 ||
+                                commandWords[1] == "WEST" && rooms[currentRoom].ToWest > 0 && rooms[currentRoom].ToWest < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToWest;
+                                Console.WriteLine();
+
+                            }
+                            else if (commandWords[1] == "U" && rooms[currentRoom].ToUp > 0 && rooms[currentRoom].ToUp < 100 ||
+                                commandWords[1] == "UP" && rooms[currentRoom].ToUp > 0 && rooms[currentRoom].ToUp < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToUp;
+                                Console.WriteLine();
+
+                            }
+                            else if (commandWords[1] == "D" && rooms[currentRoom].ToDown > 0 && rooms[currentRoom].ToDown < 100 ||
+                                commandWords[1] == "DOWN" && rooms[currentRoom].ToDown > 0 && rooms[currentRoom].ToDown < 100)
+                            {
+                                currentRoom = rooms[currentRoom].ToDown;
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sorry, You can't go that way ");
+                                Console.WriteLine();
+                            }
+
+                        }
+                        else if (commandWords[0] == "INFO" && commandWords[1] == "SHOVEL")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("SHOVEL: Useful For Digging");
+                            Console.WriteLine();
+
+                        }
+                        
+                    }
+                    }
             } while (command != "Q");
             Console.ReadKey();
         }
