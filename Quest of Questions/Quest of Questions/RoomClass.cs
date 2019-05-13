@@ -17,7 +17,10 @@ namespace Quest_of_Questions
         private int toDown;
         private bool visited;
         public List<ItemClass> roomItem = new List<ItemClass>();
+        //public List<HelperClass> helper = new List<HelperClass>();
         //public List<NoteClass> roomNote = new List<NoteClass>();
+        public HelperClass[] helper = new HelperClass[6];
+
 
 
         public int RoomNumber
