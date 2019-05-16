@@ -8,7 +8,7 @@ namespace Quest_of_Questions
     {
         private string question;
         private string answer;
-        private int associationNumber;
+        //private int associationNumber;
         private int questionNumber;
 
         public int QuestionNumber
@@ -44,24 +44,24 @@ namespace Quest_of_Questions
                 this.answer = value;
             }
         }
-        public int AssociationNumber
-        {
-            get
-            {
-                return this.associationNumber;
-            }
-            set
-            {
-                this.associationNumber = value;
-            }
-        }
+        //public int AssociationNumber
+        //{
+        //    get
+        //    {
+        //        return this.associationNumber;
+        //    }
+        //    set
+        //    {
+        //        this.associationNumber = value;
+        //    }
+        //}
 
-        public QandA(int questionNumber, string question, string answer, int associationNumber)
+        public QandA(int questionNumber, string question, string answer)
         {
             this.QuestionNumber = questionNumber;
             this.Question = question;
             this.Answer = answer;
-            this.AssociationNumber = associationNumber;
+            //this.AssociationNumber = associationNumber;
         }
     }
 }

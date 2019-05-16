@@ -664,27 +664,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ariar\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Richards\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ariar\\Desktop\\Quest of Questions\\Quest of Questions\\Quest of Questions.csproj",
+      "projectUniqueName": "C:\\Users\\Richards\\Desktop\\Quest of Questions\\Quest of Questions\\Quest of Questions.csproj",
       "projectName": "Quest of Questions",
-      "projectPath": "C:\\Users\\ariar\\Desktop\\Quest of Questions\\Quest of Questions\\Quest of Questions.csproj",
-      "packagesPath": "C:\\Users\\ariar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ariar\\Desktop\\Quest of Questions\\Quest of Questions\\obj\\",
+      "projectPath": "C:\\Users\\Richards\\Desktop\\Quest of Questions\\Quest of Questions\\Quest of Questions.csproj",
+      "packagesPath": "C:\\Users\\Richards\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Richards\\Desktop\\Quest of Questions\\Quest of Questions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ariar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Richards\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -708,6 +705,7 @@
       "netcoreapp2.0": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true

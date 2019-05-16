@@ -51,7 +51,8 @@ namespace Quest_of_Questions
             this.HelperNumber = helperNumber;
             this.HelperName = helperName;
             this.HelperInfo = helperInfo;
-
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,10 +17,13 @@ namespace Quest_of_Questions
         private int toUp;
         private int toDown;
         private bool visited;
+        private bool hasHelper;
         public List<ItemClass> roomItem = new List<ItemClass>();
+        public List<RiddleClass> riddle = new List<RiddleClass>();
+
         //public List<HelperClass> helper = new List<HelperClass>();
         //public List<NoteClass> roomNote = new List<NoteClass>();
-        public HelperClass[] helper = new HelperClass[6];
+        public HelperClass[] helper = new HelperClass[50];
 
 
 
@@ -135,12 +139,24 @@ namespace Quest_of_Questions
                 this.visited = value;
             }
         }
+        public bool HasHelper
+        {
+            get
+            {
+                return hasHelper;
+            }
+            set
+            {
+                this.hasHelper = value;
+            }
+        }
 
 
 
-        public RoomClass(int toNorth, int toEast, int toSouth, int toWest, int toUp, int toDown,
+        public RoomClass(bool hasHelper, int toNorth, int toEast, int toSouth, int toWest, int toUp, int toDown,
             string roomName, string roomDescription)
         {
+            this.HasHelper = hasHelper;
             this.RoomName = roomName;
             this.RoomDescription = roomDescription;
             this.ToNorth = toNorth;
@@ -201,6 +217,8 @@ namespace Quest_of_Questions
             return info;
         }
 
+        
+
         /*public string ReadNote()
         {
             string info = " ";
@@ -214,5 +232,5 @@ namespace Quest_of_Questions
             return info;
         }*/
 
-    }
+        }
 }
