@@ -9,6 +9,7 @@ namespace Quest_of_Questions
         private string riddle;
         private string riddleAnswer;
         private int riddleNumber;
+        private int writtenNumber;
         private int tryCount;
         private bool isSolved;
 
@@ -68,9 +69,12 @@ namespace Quest_of_Questions
             }
         }
 
-        public RiddleClass(int riddleNumber, int tryCount, string riddle, string riddleAnswer, bool isSolved)
+        public int WrittenNumber { get => writtenNumber; set => writtenNumber = value; }
+
+        public RiddleClass(int riddleNumber, int writtenNumber, int tryCount, string riddle, string riddleAnswer, bool isSolved)
         {
             this.RiddleNumber = riddleNumber;
+            this.WrittenNumber = writtenNumber;
             this.TryCount = tryCount;
             this.Riddle = riddle;
             this.RiddleAnswer = riddleAnswer;

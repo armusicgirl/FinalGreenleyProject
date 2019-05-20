@@ -10,6 +10,7 @@ namespace Quest_of_Questions
         private string characterName;
         private string specialCharacter;
         private string characterInfo;
+        private int maxHealth;
         private double health;
         private int goldHolding;
         private int itemHoldingNumber;
@@ -64,7 +65,17 @@ namespace Quest_of_Questions
                 this.goldHolding = value;
             }
         }
-
+        public int MaxHealth
+        {
+            get
+            {
+                return this.maxHealth;
+            }
+            set
+            {
+                this.maxHealth = value;
+            }
+        }
         public double Health
         {
             get
@@ -145,14 +156,15 @@ namespace Quest_of_Questions
 
         public override string ToString()
         {
-            return specialCharacter + " Health: " + health + " Strength: " + characterStrength + " Holding Limit: " + itemLimit + " Gold starting with: " + goldHolding;
+            return specialCharacter + " Health: " + health + " Strength: " + characterStrength + " Item Limit: " + itemLimit + " Gold: " + goldHolding;
         }
-        public CharacterClass(int characterNumber, string name, string specialCharacter, string characterinfo, double health, int goldHolding, int itemLimit, int characterStrength)
+        public CharacterClass(int characterNumber, string name, string specialCharacter, string characterinfo, int maxHealth, double health, int goldHolding, int itemLimit, int characterStrength)
         {
             this.CharacterNumber = characterNumber;
             this.CharacterName = name;
             this.SpecialCharacter = specialCharacter;
             this.CharacterInfo = characterinfo;
+            this.MaxHealth = maxHealth;
             this.Health = health;
             this.GoldHolding = goldHolding;
             this.ItemLimit = itemLimit;

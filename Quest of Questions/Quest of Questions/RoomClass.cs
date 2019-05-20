@@ -18,12 +18,17 @@ namespace Quest_of_Questions
         private int toDown;
         private bool visited;
         private bool hasHelper;
+        private bool hasMonster;
+        private bool riddleSolved;
         public List<ItemClass> roomItem = new List<ItemClass>();
         public List<RiddleClass> riddle = new List<RiddleClass>();
+        //public List<MonsterClass> monster = new List<MonsterClass>();
 
         //public List<HelperClass> helper = new List<HelperClass>();
         //public List<NoteClass> roomNote = new List<NoteClass>();
         public HelperClass[] helper = new HelperClass[50];
+        public MonsterClass[] monster = new MonsterClass[50];
+
 
 
 
@@ -150,12 +155,25 @@ namespace Quest_of_Questions
                 this.hasHelper = value;
             }
         }
+        public bool HasMonster
+        {
+            get
+            {
+                return hasMonster;
+            }
+            set
+            {
+                this.hasMonster = value;
+            }
+        }
 
+        public bool RiddleSolved { get => riddleSolved; set => riddleSolved = value; }
 
-
-        public RoomClass(bool hasHelper, int toNorth, int toEast, int toSouth, int toWest, int toUp, int toDown,
+        public RoomClass(bool riddleSolved, bool hasMonster, bool hasHelper, int toNorth, int toEast, int toSouth, int toWest, int toUp, int toDown,
             string roomName, string roomDescription)
         {
+            this.RiddleSolved = riddleSolved;
+            this.HasMonster = hasMonster;
             this.HasHelper = hasHelper;
             this.RoomName = roomName;
             this.RoomDescription = roomDescription;
@@ -211,7 +229,15 @@ namespace Quest_of_Questions
                 info += "\n In the room you see:";
                 foreach (ItemClass item in roomItem)
                 {
-                    info += item.ItemName + " ";
+                    if(item.ItemNumber >= 0)
+                    {
+                        info += item.ItemName + "; ";
+                    }
+                    else
+                    {
+                        info += "You must solve the riddle to be able to get " + item.ItemName + "; "; 
+                    }
+                    
                 }
             }
             return info;
